@@ -1,0 +1,51 @@
+On master OS-- 
+$ ifconfig eth0
+$ id jenkins
+$ sudo passwd jenkins ---
+$ su jenkins
+$ ssh-keygen
+
+On jenkins UI
+Manage jenkins -> credential -> system -> Global credentials -> Add credentials -> SSH username with private key -> username [jenkins]
+
+On master OS
+$cat (private key from ssh-keygen)
+copy and paste on jenkins UI (private key -> click -> create
+
+On slave OS
+install java
+$ sudo adduser jenkins ---
+$ ifconfig eth0
+copy ip address
+
+On master OS
+$ ssh-copy-id jenkins@ip  (salve name and ip) NOTE THE PASSWORD ATHENTICATION ON SLAVE OS SHOULD BE "YES" AND IF NOT
+
+On slave OS
+$ sudo vi /etc/ssh/sshd_config
+Change "paasswordAthentication" to "yes"
+$ systemctl restart sshd
+
+On master OS
+$ ssh-copy-id jenkins@ip
+
+To check if key is coppied on slave OS
+On slave OS
+
+$ su - jenkins
+$ cd .ssh
+$ cat authorised_key
+
+On jenkin UI
+Manage jenkins -> manage nodes -> Add new node -> node name (slave01) -> permanent Agent -> create -> remote home directory (/home/jenkins)
+labels (slave01) -> usage (only build jobs with---) -> launch method (launch agent via ssh) -> host (add slave ip here)
+credentials (select jenkins) NB this will only appear after you must have added the private key earlier (see line number 9)
+-> save 
+
+To check connection
+click on slave01 node -> click on log
+
+on master now you can see to nodes
+
+Execute a job on slave01 to check
+
