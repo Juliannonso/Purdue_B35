@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Function to check if Jenkins is running
+check_jenkins() {
+    if systemctl is-active --quiet jenkins; then
+        return 0  # Jenkins is running
+    else
+        return 1  # Jenkins is not running
+    fi
+}
+
+# Restart Jenkins if it's not running
+if ! check_jenkins; then
+    echo "Jenkins is not running. Restarting Jenkins..."
+    sudo systemctl restart jenkins
+
+    # Check if Jenkins is running after restart
+    if check_jenkins; then
+        echo "Jenkins has been successfully restarted."
+    else
+        echo "Failed to restart Jenkins."
+    fi
+else
+    echo "Jenkins is already running."
+fi
