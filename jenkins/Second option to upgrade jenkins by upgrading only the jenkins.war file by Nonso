@@ -1,0 +1,7 @@
+$ cd /usr/share/java
+$ ls -lrt (to veiw jenkins.war)
+$ cp jenkins.war jenkins.war_backup (to copy file for backup)
+$ rm -rf jenkins.war (to remove jenkins.war)
+copy new jenkins war file from website ( https://get.jenkins.io/war/2.448/  ie  [https://get.jenkins.io/war/2.448/jenkins.war]
+$ wget https://get.jenkins.io/war/2.448/jenkins.war
+$ systemctl restart jenkins
