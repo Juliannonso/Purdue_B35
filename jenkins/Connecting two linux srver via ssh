@@ -1,0 +1,30 @@
+On master OS-- 
+$ ifconfig eth0
+$ id jenkins
+$ sudo passwd jenkins ---
+$ su jenkins
+$ ssh-keygen
+$cat (private key from ssh-keygen)
+
+On slave OS
+$ sudo adduser jenkins ---
+$ ifconfig eth0
+copy ip address
+
+On master OS
+$ ssh-copy-id slavename[Jenkins]@slaveip  (salve name and ip) NOTE THE PASSWORD ATHENTICATION ON SLAVE OS SHOULD BE "YES" AND IF NOT
+
+On slave OS
+$ sudo vi /etc/ssh/sshd_config
+Change "paasswordAthentication" to "yes"
+$ systemctl restart sshd
+
+On master OS
+$ ssh-copy-id jenkins@ip
+
+To check if key is coppied on slave OS
+On slave OS
+
+$ su - jenkins
+$ cd .ssh
+$ cat authorised_key
