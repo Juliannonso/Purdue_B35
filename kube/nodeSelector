@@ -1,1 +1,6 @@
+# Label node with below command
+$ kubectl get nodes --show-labels
+$ kubectl label nodes <node name> workload=<name of your choice>
+
+$ sudo vi node-selector.yml
 
