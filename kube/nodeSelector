@@ -15,3 +15,12 @@ spec:
     image: tomcat
   nodeSelector:
      Workload: prod
+
+
+# then apply
+$ kubectl apply -f  node-selector.yml
+$ kubectl get pods -o wide (to check)
+$ kubectl get nodes --show-labels (to check)
+$ kubectl describe node <node name>
+
+
