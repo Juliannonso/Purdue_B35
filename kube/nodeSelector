@@ -3,4 +3,15 @@ $ kubectl get nodes --show-labels
 $ kubectl label nodes <node name> workload=<name of your choice>
 
 $ sudo vi node-selector.yml
+# copy and paster the below command
 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodeselector-demo
+spec:
+  containers:
+  - name: tomcat
+    image: tomcat
+  nodeSelector:
+     Workload: prod
