@@ -19,5 +19,4 @@ spec:
       name: data
   volumes:
   - name: data
-    emptyDir: {}
-      sizeLimit: 500Mi
+    emptyDir:
