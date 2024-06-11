@@ -1,0 +1,19 @@
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-share-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessMode: 
+   - ReadWriteMany
+   - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Recycle # you can have retain, delete or recycle
+  mountOption:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /nfs
+    server: # your control plane name i.e kmaster
