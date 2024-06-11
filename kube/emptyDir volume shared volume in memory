@@ -21,4 +21,4 @@ spec:
   volumes:
   - name: data
     emptyDir:
-      medium: memory
+      medium: Memory
