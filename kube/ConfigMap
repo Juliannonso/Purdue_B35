@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-cm
+  name: nginx-cm
+spec:
+  containers:
+  - image: nginx
+    name: nginx-cm
+  volumes:
+  - name: conf
+    configMap:
+       name: nginx-cm
+       items:
+       - key: nginx-custom-config.conf
+         path: default.conf
