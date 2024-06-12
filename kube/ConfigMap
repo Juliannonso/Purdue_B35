@@ -8,6 +8,9 @@ spec:
   containers:
   - image: nginx
     name: nginx-cm
+    volumeMounts:
+    - name: conf
+      mountPath: /etc/nginx/conf.d
   volumes:
   - name: conf
     configMap:
