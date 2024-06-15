@@ -1,9 +1,11 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
+  name: resource-quota
   namespace: quota-example # ensure you have created this name space ($kubectl create ns quota-example)
 spec:
-  limits.cpu: 1
+  hard:
+    limits.cpu: 1
 
 #vi <namespace.yml>
 #kubectl apply -f <namespace.yml>
