@@ -7,7 +7,7 @@ subjects:
 - kind: User
   name: user1
   apiGroup: ""
-rulRef:
+roleRef:
   kind: role
   name: dev
   apiGroup: ""
