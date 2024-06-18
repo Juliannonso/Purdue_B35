@@ -1,1 +1,13 @@
-
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/ve  # this comes from $ kubectl explain Role | -n 2
+metadata:
+  name: dev-role-binding # anyname of your choice
+  namespace: dev
+subjects:
+- kind: User
+  name: user1
+  apiGroup: ""
+rulRef:
+  kind: role
+  name: dev
+  apiGroup: ""
