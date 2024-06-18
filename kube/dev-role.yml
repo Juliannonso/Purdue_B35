@@ -1,1 +1,9 @@
-
+kind: Role
+apiVersion: rbac.authorization.k8s.io/ve  # this comes from $ kubectl explain Role | -n 2
+metadata:
+  namespace: dev
+  name: dev
+rules:
+ - apiGroups: ["", "extensions", "apps" ]
+   resources: [ "deployment", "replicasets", "pods"]
+   verbs: [ "list", "get", "watch", "create", "delete", "upgrade", "patch"]
