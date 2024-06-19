@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-user-pod
+  namespace: default
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    securityContext:
+      runAsUser: 1000  # The user ID to run the container as
+      runAsGroup: 1000 # The group ID to run the container as (optional)
+      fsGroup: 2000    # The group ID for volumes mounted by this container (optional)
+    ports:
+    - containerPort: 80
