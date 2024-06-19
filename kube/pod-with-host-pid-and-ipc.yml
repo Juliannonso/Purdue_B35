@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-host-pid-and-ipc
+  namespace: default
+spec:
+  hostIPC: true # allow pod to use node IPC
+  hostPID: true # allow node to use PID to see other processes running on node and communicte with them
+  containers:
+  - name: main
+    image: alpine # you can use nginx too
+    command: ["/bin/sleep", "999999"]  # this container will sleep after this time
