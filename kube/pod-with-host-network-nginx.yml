@@ -1,14 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-hostnetwork-pod
+  name: nginx-lab
   namespace: default
 spec:
-  hostNetwork: true
   containers:
-  - name: my-container
+  - name: nginx-lab
     image: nginx
     ports:
     - containerPort: 80
-      hostPort: 80
+      hostPort: 9000
       protocol: TCP
