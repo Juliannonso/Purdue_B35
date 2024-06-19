@@ -9,6 +9,4 @@ spec:
   - name: main
     image: alpine # you can use nginx too
     command: ["/bin/sleep", "999999"]  # this container will sleep after this time
-    ports:
-    - containerPort: 80
-      hostPort: 80
+    
