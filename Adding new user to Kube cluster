@@ -1,0 +1,48 @@
+# create new user 
+$ sudo adduser newuser
+$ sudo usermod -aG sudo newuser
+$ openssl genrsa -out newuser.key 2048
+$ openssl req -new -key newuser.key -out newuser.csr -subj "/CN=newuser/O=group" # /0=<your choice of namespace>
+$ sudo cp /etc/kubernetes/pki/ca.crt /etc/kubernetes/pki/ca.key .
+$ openssl x509 -req -in newuser.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out newuser.crt -days 365
+$ kubectl config set-credentials newuser --client-certificate=newuser.crt --client-key=newuser.key
+$ kubectl config set-context newuser-context --cluster=<your-cluster-name> --namespace=default --user=newuser # kubectl config view to see your clusters
+
+
+# Create a Role and RoleBinding for the User
+
+$ vi role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: newuser-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"] # see dev-role.yml for more verbs
+
+$ vi rolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: newuser-rolebinding
+  namespace: default
+subjects:
+- kind: User
+  name: newuser
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: newuser-role
+  apiGroup: rbac.authorization.k8s.io
+
+$ kubectl apply -f role.yaml
+$ kubectl apply -f rolebinding.yaml
+
+# To switch to context
+
+$ kubectl config get-contexts # To check available contexts 
+$ kubectl config use-context <context name> # To switch to desired context
+
+
