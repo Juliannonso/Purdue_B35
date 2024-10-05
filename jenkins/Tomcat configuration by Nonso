@@ -9,10 +9,6 @@ $ cd tomcat9
 $ sudo vi conf/tomcat-users.xml
 past below at the bottom 
 
-
-
-<?xml version='1.0' encoding='utf-8'?>
-<tomcat-users>
     <role rolename="manager-gui"/>
     <role rolename="manager-script"/>
     <role rolename="manager-jmx"/>
@@ -23,7 +19,7 @@ past below at the bottom
 
 save and quit (wq)
 navigaet to bin
-$cd bin or cd tomcat9 then ./bin/startup.sh (to restart tomcat)
+$cd bin or cd tomcat9 then ./bin/shortdown.sh, ./bin/startup.sh (to restart tomcat)
 back to tomcat9 home
 $ find . -name context.xml (to see list )
 .webapps/manager/META-INF/context.xml
