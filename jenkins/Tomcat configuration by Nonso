@@ -9,6 +9,8 @@ $ cd tomcat9
 $ sudo vi conf/tomcat-users.xml
 past below at the bottom 
 
+
+
 <?xml version='1.0' encoding='utf-8'?>
 <tomcat-users>
     <role rolename="manager-gui"/>
@@ -32,3 +34,6 @@ $ find . -name context.xml (to see list )
 vi all of them one after the other and comment oUT "value" ie <!-- at the beginning and --> at the end 
 restart tomcat9 again
 NB the above will set up username and password to login into tomcat as edureka , edureka and gave rights to above mentioned roles 
+
+#if you want to change the tomcat port number
+$ vi server.xml  (then change the port number)
