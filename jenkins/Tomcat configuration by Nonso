@@ -19,7 +19,7 @@ past below at the bottom
 
 save and quit (wq)
 navigaet to bin
-$cd bin or cd tomcat9 then ./bin/shortdown.sh, ./bin/startup.sh (to restart tomcat)
+$cd bin or cd tomcat9 then ./bin/shortdown.sh and then ./bin/startup.sh (to restart tomcat)
 back to tomcat9 home
 $ find . -name context.xml (to see list )
 .webapps/manager/META-INF/context.xml
